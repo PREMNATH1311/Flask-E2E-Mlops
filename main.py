@@ -3,6 +3,11 @@ from src.FlaskMlops.pipeline.data_ingestion_pipeline import DataIngestionPipelin
 from src.FlaskMlops.pipeline.data_validation_pipeline import DataValidationTraniningPipeline
 from src.FlaskMlops.pipeline.data_transformation_pipeline import DataTransformationPipeline
 from src.FlaskMlops.pipeline.model_trainer_pipeline import ModelTrainerPipeline
+from src.FlaskMlops.pipeline.model_evaluation_pipeline import ModelEvaluationPipeline
+from dotenv import load_dotenv
+import os
+
+load_dotenv()   # loads .env into environment variables
 
 
 STAGE_NAME= "Data Ingestion stage"
@@ -42,6 +47,17 @@ try:
     logger.info(f">>>>>>>>>>>>>>>> stage '{STAGE_NAME}' started <<<<<<<<<<<<<<<<<")
     model_trainer=ModelTrainerPipeline()
     model_trainer.initiate_model_trainer()
+    logger.info(f">>>>>>>>>>>>>>>>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<<<<<<<<<<<<<<<<<<<\n \n ")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME="Model Evaluation stage"
+
+try:
+    logger.info(f">>>>>>>>>>>>>>>> stage '{STAGE_NAME}' started <<<<<<<<<<<<<<<<<")
+    model_evaluation=ModelEvaluationPipeline()
+    model_evaluation.initiate_model_evaluation()
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<<<<<<<<<<<<<<<<<<<\n \n ")
 except Exception as e:
     logger.exception(e)
