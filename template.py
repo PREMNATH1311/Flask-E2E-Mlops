@@ -3,7 +3,7 @@ from pathlib import Path
 import logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
 
-project_name="Flask Mlops"
+project_name="FlaskMlops"
 
 list_of_files=[
     ".github/workflows/.gitkeep",
@@ -23,7 +23,7 @@ list_of_files=[
     "main.py",
     "Dockerfile",
     "setup.py",
-    "research/research.ipynb"
+    "research/research.ipynb",
     "templates/index.html"
     
 ]
